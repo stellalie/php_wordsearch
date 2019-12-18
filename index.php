@@ -1,4 +1,7 @@
 <?php
+
+$time_start = microtime(true);
+
 require_once 'helper.php';
 
 if (!isset($argv[1])) {
@@ -18,13 +21,22 @@ for ($y = 0; $y < $width; $y++) {
     $lookupDict['v'][$y] = implode(array_column($matrix, $y), '');
 }
 for ($a = 0; $a <= $width + $height - 2; $a++) {
-    for ($b = 0; $b <= $a; $b++) {
-        $c = $a - $b;
-        if ($c < $height && $b < $width) {
-            if (!isset($lookupDict['d'][$a])) {
-                $lookupDict['d'][$a] = '';
+    for ($c = 0; $c <= $a; $c++) {
+        // diagonal 1
+        $r = $a - $c;
+        if ($r < $height && $c < $width) {
+            if (!isset($lookupDict['d1'][$a])) {
+                $lookupDict['d1'][$a] = '';
             }
-            $lookupDict['d'][$a] .= $matrix[$c][$b];
+            $lookupDict['d1'][$a] .= $matrix[$r][$c];
+        }
+        // diagonal 2
+        $r2 = $height - $r - 1;
+        if ($r2 >= 0 && $r2 < $height && $c < $width) {
+            if (!isset($lookupDict['d2'][$a])) {
+                $lookupDict['d2'][$a] = '';
+            }
+            $lookupDict['d2'][$a] .= $matrix[$r2][$c];
         }
     }
 }
@@ -33,44 +45,47 @@ for ($a = 0; $a <= $width + $height - 2; $a++) {
 $words = explode(',', $file[2]);
 $founds = [];
 foreach ($words as $word) {
+    $wordFound = false;
     // At horizontal
     foreach ($lookupDict['h'] as $x => $row) {
+        if ($wordFound) break;
         $v = strpos($row, $word);
-        if ($v !== false) echo $word . ' h: ' . $v .  PHP_EOL;
+        if ($v !== false && !$wordFound) { echo $word . ' h: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
         $v = strpos($row, strrev($word));
-        if ($v !== false) echo $word . ' h: ' . $v .  PHP_EOL;
+        if ($v !== false && !$wordFound) { echo $word . ' hh: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
     }
     // At vertical
     foreach ($lookupDict['v'] as $y => $column) {
-//        $found = find($column, $word, $y, function ($w, $v, $i) { return [$w, $v + $i]; });
-//        if ($found) {
-//            $founds[$word][] = $found;
-//        }
-        $found = find($column, strrev($word), $y, function ($w, $v, $i) { return [$w, $v + $i]; });
-        if ($found) {
-            $founds[$word][] = $found;
-        }
+        if ($wordFound) break;
+        $v = strpos($column, $word);
+        if ($v !== false && !$wordFound) { echo $word . ' v: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        $v = strpos($column, strrev($word));
+        if ($v !== false && !$wordFound) { echo $word . ' vv: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
     }
-    // At diagonal
-    foreach ($lookupDict['d'] as $d => $diagonal) {
-        $v = strpos($diagonal, $word);
-        if ($v !== false) echo $word . PHP_EOL;
-        $v = strpos($diagonal, strrev($word));
-        if ($v !== false) echo $word . PHP_EOL;
+    // At diagonal 1
+    foreach ($lookupDict['d1'] as $d => $diagonal1) {
+        if ($wordFound) break;
+        $v = strpos($diagonal1, $word);
+        if ($v !== false && !$wordFound) { echo $word . ' d1: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        $v = strpos($diagonal1, strrev($word));
+        if ($v !== false && !$wordFound) { echo $word . ' dd1: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
     }
-}
-
-function find($string, $word, $w, callable $coordinateFn) {
-    $v = strpos($string, $word);
-    if ($v !== false) {
-        return array_map(function ($c, $i) use ($coordinateFn, $v, $w) {
-            list($x, $y) = $coordinateFn($w, $v, $i);
-            return [$c, $x, $y];
-        }, str_split($word), array_keys(str_split($word)));
+    // At diagonal 2
+    foreach ($lookupDict['d2'] as $d => $diagonal2) {
+        if ($wordFound) break;
+        $v = strpos($diagonal2, $word);
+        if ($v !== false && !$wordFound) { echo $word . ' d2: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        $v = strpos($diagonal2, strrev($word));
+        if ($v !== false && !$wordFound) { echo $word . ' dd2: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
     }
-    return false;
 }
 
 // Some visualisation
-renderMatrix($matrix);
-renderSolution($founds);
+//echo PHP_EOL;
+//renderMatrix($matrix);
+
+// Execution time of the script
+$time_end = microtime(true);
+echo "$time_end - $time_start = " . round(($time_end - $time_start) * 1000) . "ms";
+echo PHP_EOL . count(array_unique($founds)) . ' unique words' . PHP_EOL;
+echo PHP_EOL;

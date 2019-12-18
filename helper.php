@@ -6,10 +6,10 @@ function renderMatrix(array $matrix)
     $width = count($matrix[0]);
 
     // Print matrix
-    echo '  ' . implode(range(0, $width - 1), ' ') . PHP_EOL;
+    // echo '   ' . implode(range(0, $width - 1), '  ') . PHP_EOL;
     foreach ($matrix as $y => $row) {
-        echo $y . ' ';
-        echo implode($row, ' ') . PHP_EOL;
+//        echo $y . '  ';
+        echo implode($row, '') . PHP_EOL;
     }
     echo PHP_EOL;
 }

@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2cf446-cd56-4162-8550-4227e24db82f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sample-B.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sample-C.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +32,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -41,7 +47,7 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/index.php">
       <method v="2" />
     </configuration>
-    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" nameIsGenerated="true" path="$PROJECT_DIR$/index.php" scriptParameters="Sample-A.txt">
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" nameIsGenerated="true" path="$PROJECT_DIR$/index.php" scriptParameters="Sample-C.txt">
       <CommandLine>
         <PhpTestInterpreterSettings>
           <option name="interpreterName" value="PHP 7.1" />
@@ -72,7 +78,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576546295945</updated>
-      <workItem from="1576546298639" duration="6867000" />
+      <workItem from="1576546298639" duration="11214000" />
+      <workItem from="1576624379415" duration="348000" />
     </task>
     <servers />
   </component>
@@ -84,37 +91,45 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="517" y="296" key="#CLI_Interpreters/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576547234634" />
-    <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576547463067">
+    <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576628436085">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576547463067" />
-    <state width="1358" height="179" key="GridCell.Tab.0.bottom" timestamp="1576560152012">
+    <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576628436085" />
+    <state width="1358" height="247" key="GridCell.Tab.0.bottom" timestamp="1576565837197">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="179" key="GridCell.Tab.0.bottom/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576560152012" />
-    <state width="1358" height="179" key="GridCell.Tab.0.center" timestamp="1576560152009">
+    <state width="1358" height="247" key="GridCell.Tab.0.bottom/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576565837197" />
+    <state width="1358" height="247" key="GridCell.Tab.0.center" timestamp="1576565837196">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="179" key="GridCell.Tab.0.center/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576560152009" />
-    <state width="1358" height="179" key="GridCell.Tab.0.left" timestamp="1576560152008">
+    <state width="1358" height="247" key="GridCell.Tab.0.center/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576565837196" />
+    <state width="1358" height="247" key="GridCell.Tab.0.left" timestamp="1576565837196">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="179" key="GridCell.Tab.0.left/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576560152008" />
-    <state width="1358" height="179" key="GridCell.Tab.0.right" timestamp="1576560152010">
+    <state width="1358" height="247" key="GridCell.Tab.0.left/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576565837196" />
+    <state width="1358" height="247" key="GridCell.Tab.0.right" timestamp="1576565837197">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="179" key="GridCell.Tab.0.right/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576560152010" />
+    <state width="1358" height="247" key="GridCell.Tab.0.right/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576565837197" />
     <state x="469" y="190" key="SettingsEditor" timestamp="1576548068803">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="469" y="190" key="SettingsEditor/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576548068803" />
-    <state x="639" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1576546298625">
+    <state x="360" y="151" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576560315671">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="639" y="383" key="com.intellij.ide.util.TipDialog/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576546298625" />
+    <state x="360" y="151" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576560315671" />
+    <state x="479" y="502" key="com.intellij.ide.util.TipDialog" timestamp="1576628395387">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="479" y="502" key="com.intellij.ide.util.TipDialog/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576628395387" />
     <state x="0" y="23" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1576547187490">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="0" y="23" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576547187490" />
+    <state x="740" y="349" width="670" height="676" key="search.everywhere.popup" timestamp="1576565786698">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="740" y="349" width="670" height="676" key="search.everywhere.popup/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576565786698" />
   </component>
 </project>
