@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2cf446-cd56-4162-8550-4227e24db82f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +41,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.test.txt">
+  <component name="RunManager" selected="PHP Script.Sample-A.txt">
     <configuration name="Sample-A.txt" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/index.php" scriptParameters="Sample-A.txt">
       <CommandLine>
         <PhpTestInterpreterSettings>
@@ -108,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1576546295945</updated>
       <workItem from="1576546298639" duration="11214000" />
-      <workItem from="1576624379415" duration="5932000" />
+      <workItem from="1576624379415" duration="7787000" />
     </task>
     <servers />
   </component>
@@ -135,22 +134,22 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576731479911" />
-    <state width="1358" height="297" key="GridCell.Tab.0.bottom" timestamp="1576732184086">
+    <state width="1358" height="272" key="GridCell.Tab.0.bottom" timestamp="1576734847570">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="297" key="GridCell.Tab.0.bottom/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576732184086" />
-    <state width="1358" height="297" key="GridCell.Tab.0.center" timestamp="1576732184085">
+    <state width="1358" height="272" key="GridCell.Tab.0.bottom/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576734847570" />
+    <state width="1358" height="272" key="GridCell.Tab.0.center" timestamp="1576734847568">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="297" key="GridCell.Tab.0.center/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576732184085" />
-    <state width="1358" height="297" key="GridCell.Tab.0.left" timestamp="1576732184085">
+    <state width="1358" height="272" key="GridCell.Tab.0.center/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576734847568" />
+    <state width="1358" height="272" key="GridCell.Tab.0.left" timestamp="1576734847566">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="297" key="GridCell.Tab.0.left/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576732184085" />
-    <state width="1358" height="297" key="GridCell.Tab.0.right" timestamp="1576732184086">
+    <state width="1358" height="272" key="GridCell.Tab.0.left/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576734847566" />
+    <state width="1358" height="272" key="GridCell.Tab.0.right" timestamp="1576734847569">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1358" height="297" key="GridCell.Tab.0.right/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576732184086" />
+    <state width="1358" height="272" key="GridCell.Tab.0.right/262.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1576734847569" />
     <state x="469" y="190" key="SettingsEditor" timestamp="1576628845772">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>

@@ -26,3 +26,29 @@ function renderSolution(array $founds)
     }
 }
 
+function generateHorizontalCoordinates($word, $v, $r)
+{
+    $coords = [];
+    for ($i = 0; $i < strlen($word); $i++) {
+        $coords[] = [$r, $v + $i];
+    }
+    return $coords;
+}
+
+function generateVerticalCoordinate($word, $v, $c)
+{
+    $coords = [];
+    for ($i = 0; $i < strlen($word); $i++) {
+        $coords[] = [$v + $i, $c];
+    }
+    return $coords;
+}
+
+function generateDiagonal1Coordinate($word, $v, $d, $width, $height)
+{
+    $coords = [];
+    for ($i = 0; $i < strlen($word); $i++) { // TODO: i love my holiday. merry xmas and happy new year
+        $coords[] = [rand(0, $width - 1), rand(0, $height - 1)];
+    }
+    return $coords;
+}

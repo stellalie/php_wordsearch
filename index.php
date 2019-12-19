@@ -4,6 +4,7 @@ $time_start = microtime(true);
 
 require_once 'helper.php';
 
+// Read input
 if (!isset($argv[1])) {
     throw new Exception('Input file argument has to be provided');
 }
@@ -56,25 +57,18 @@ foreach ($words as $word) {
         $v = strpos($row, strrev($word));
         if (!$wordFound && $v !== false) {
             $founds[$word] = array_reverse(generateHorizontalCoordinates($word, $v, $r)); $wordFound = true;
-            $wordFound = true;
         }
     }
     // At vertical
-    foreach ($lookupDict['v'] as $x => $column) {
+    foreach ($lookupDict['v'] as $c => $column) {
         if ($wordFound) break;
         $v = strpos($column, $word);
         if (!$wordFound && $v !== false) {
-            for ($i = 0; $i < strlen($word); $i++) {
-                $founds[$word][] = [0, 0];
-            }
-            $wordFound = true;
+            $founds[$word] = generateVerticalCoordinate($word, $v, $c); $wordFound = true;
         }
         $v = strpos($column, strrev($word));
         if (!$wordFound && $v !== false) {
-            for ($i = 0; $i < strlen($word); $i++) {
-                $founds[$word][] = [0, 0];
-            }
-            $wordFound = true;
+            $founds[$word] = array_reverse(generateVerticalCoordinate($word, $v, $c)); $wordFound = true;
         }
     }
     // At diagonal 1
@@ -82,17 +76,11 @@ foreach ($words as $word) {
         if ($wordFound) break;
         $v = strpos($diagonal1, $word);
         if (!$wordFound && $v !== false) {
-            for ($i = 0; $i < strlen($word); $i++) {
-                $founds[$word][] = [0, 0];
-            }
-            $wordFound = true;
+            $founds[$word] = generateDiagonal1Coordinate($word, $v, $d, $width, $height); $wordFound = true;
         }
         $v = strpos($diagonal1, strrev($word));
         if (!$wordFound && $v !== false) {
-            for ($i = 0; $i < strlen($word); $i++) {
-                $founds[$word][] = [0, 0];
-            }
-            $wordFound = true;
+            $founds[$word] = array_reverse(generateDiagonal1Coordinate($word, $v, $d, $width, $height)); $wordFound = true;
         }
     }
     // At diagonal 2
@@ -100,36 +88,23 @@ foreach ($words as $word) {
         if ($wordFound) break;
         $v = strpos($diagonal2, $word);
         if (!$wordFound && $v !== false) {
-            for ($i = 0; $i < strlen($word); $i++) {
-                $founds[$word][] = [0, 0];
-            }
+            $founds[$word] = generateDiagonal1Coordinate($word, $v, $d, $width, $height); $wordFound = true;
             $wordFound = true;
         }
         $v = strpos($diagonal2, strrev($word));
         if (!$wordFound && $v !== false) {
-            for ($i = 0; $i < strlen($word); $i++) {
-                $founds[$word][] = [0, 0];
-            }
+            $founds[$word] = array_reverse(generateDiagonal1Coordinate($word, $v, $d, $width, $height)); $wordFound = true;
             $wordFound = true;
         }
     }
 }
 
-function generateHorizontalCoordinates($word, $v, $r)
-{
-    $coords = [];
-    for ($i = 0; $i < strlen($word); $i++) {
-        $coords[] = [$r, $v + $i];
-    }
-    return $coords;
-}
-
-// Some visualisation
-//echo PHP_EOL;
+// Some visualisation and echo-ing
 renderMatrix($matrix);
 renderSolution($founds);
 
-// Execution time of the script
+// Print Execution time of the script
+echo PHP_EOL;
 $time_end = microtime(true);
 echo "$time_end - $time_start = " . round(($time_end - $time_start) * 1000) . "ms";
 echo PHP_EOL . count(array_unique(array_keys($founds))) . ' unique words' . PHP_EOL;
