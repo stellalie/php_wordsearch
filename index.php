@@ -47,45 +47,90 @@ $founds = [];
 foreach ($words as $word) {
     $wordFound = false;
     // At horizontal
-    foreach ($lookupDict['h'] as $x => $row) {
+    foreach ($lookupDict['h'] as $r => $row) {
         if ($wordFound) break;
         $v = strpos($row, $word);
-        if ($v !== false && !$wordFound) { echo $word . ' h: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            $founds[$word] = generateHorizontalCoordinates($word, $v, $r); $wordFound = true;
+        }
         $v = strpos($row, strrev($word));
-        if ($v !== false && !$wordFound) { echo $word . ' hh: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            $founds[$word] = array_reverse(generateHorizontalCoordinates($word, $v, $r)); $wordFound = true;
+            $wordFound = true;
+        }
     }
     // At vertical
-    foreach ($lookupDict['v'] as $y => $column) {
+    foreach ($lookupDict['v'] as $x => $column) {
         if ($wordFound) break;
         $v = strpos($column, $word);
-        if ($v !== false && !$wordFound) { echo $word . ' v: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            for ($i = 0; $i < strlen($word); $i++) {
+                $founds[$word][] = [0, 0];
+            }
+            $wordFound = true;
+        }
         $v = strpos($column, strrev($word));
-        if ($v !== false && !$wordFound) { echo $word . ' vv: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            for ($i = 0; $i < strlen($word); $i++) {
+                $founds[$word][] = [0, 0];
+            }
+            $wordFound = true;
+        }
     }
     // At diagonal 1
     foreach ($lookupDict['d1'] as $d => $diagonal1) {
         if ($wordFound) break;
         $v = strpos($diagonal1, $word);
-        if ($v !== false && !$wordFound) { echo $word . ' d1: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            for ($i = 0; $i < strlen($word); $i++) {
+                $founds[$word][] = [0, 0];
+            }
+            $wordFound = true;
+        }
         $v = strpos($diagonal1, strrev($word));
-        if ($v !== false && !$wordFound) { echo $word . ' dd1: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            for ($i = 0; $i < strlen($word); $i++) {
+                $founds[$word][] = [0, 0];
+            }
+            $wordFound = true;
+        }
     }
     // At diagonal 2
     foreach ($lookupDict['d2'] as $d => $diagonal2) {
         if ($wordFound) break;
         $v = strpos($diagonal2, $word);
-        if ($v !== false && !$wordFound) { echo $word . ' d2: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            for ($i = 0; $i < strlen($word); $i++) {
+                $founds[$word][] = [0, 0];
+            }
+            $wordFound = true;
+        }
         $v = strpos($diagonal2, strrev($word));
-        if ($v !== false && !$wordFound) { echo $word . ' dd2: ' . $v .  PHP_EOL; $founds[] = $word; $wordFound = true; }
+        if (!$wordFound && $v !== false) {
+            for ($i = 0; $i < strlen($word); $i++) {
+                $founds[$word][] = [0, 0];
+            }
+            $wordFound = true;
+        }
     }
+}
+
+function generateHorizontalCoordinates($word, $v, $r)
+{
+    $coords = [];
+    for ($i = 0; $i < strlen($word); $i++) {
+        $coords[] = [$r, $v + $i];
+    }
+    return $coords;
 }
 
 // Some visualisation
 //echo PHP_EOL;
-//renderMatrix($matrix);
+renderMatrix($matrix);
+renderSolution($founds);
 
 // Execution time of the script
 $time_end = microtime(true);
 echo "$time_end - $time_start = " . round(($time_end - $time_start) * 1000) . "ms";
-echo PHP_EOL . count(array_unique($founds)) . ' unique words' . PHP_EOL;
+echo PHP_EOL . count(array_unique(array_keys($founds))) . ' unique words' . PHP_EOL;
 echo PHP_EOL;

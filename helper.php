@@ -6,10 +6,10 @@ function renderMatrix(array $matrix)
     $width = count($matrix[0]);
 
     // Print matrix
-    // echo '   ' . implode(range(0, $width - 1), '  ') . PHP_EOL;
+    echo '  ' . implode(range(0, $width - 1), '  ') . PHP_EOL;
     foreach ($matrix as $y => $row) {
-//        echo $y . '  ';
-        echo implode($row, '') . PHP_EOL;
+        echo $y . ' ';
+        echo implode($row, '  ') . PHP_EOL;
     }
     echo PHP_EOL;
 }
@@ -17,14 +17,12 @@ function renderMatrix(array $matrix)
 function renderSolution(array $founds)
 {
     // Print solution
-    foreach ($founds as $word => $found) {
-        echo $word . ' ';
-        foreach ($found as $f) {
-            foreach ($f as $ff) {
-                echo "$ff[0] ($ff[1], $ff[2]) ";
-            }
+    foreach ($founds as $word => $coordinates) {
+        $string = $word . ' ';
+        foreach ($coordinates as $c) {
+            $string .= '[' . implode(', ', $c) . '] ';
         }
-        echo PHP_EOL;
+        echo $string . PHP_EOL;
     }
 }
 
