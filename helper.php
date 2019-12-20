@@ -43,12 +43,3 @@ function generateVerticalCoordinate($word, $v, $c)
     }
     return $coords;
 }
-
-function generateDiagonal1Coordinate($word, $v, $d, $width, $height)
-{
-    $coords = [];
-    for ($i = 0; $i < strlen($word); $i++) { // TODO: i love my holiday. merry xmas and happy new year
-        $coords[] = [rand(0, $width - 1), rand(0, $height - 1)];
-    }
-    return $coords;
-}

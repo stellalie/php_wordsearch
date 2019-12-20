@@ -14,30 +14,32 @@ $width = (int) explode(',', $file[0])[1];
 $matrix = array_chunk(explode(',', $file[1]), $width);
 
 // Build horizontal, vertical, and diagonal lookup tables
-$lookupDict = [];
-for ($x = 0; $x < $height; $x++) {
-    $lookupDict['h'][$x] = implode($matrix[$x], '');
+$lookup = [];
+for ($r = 0; $r < $height; $r++) {
+    $lookup['h'][$r] = implode($matrix[$r], '');
 }
 for ($y = 0; $y < $width; $y++) {
-    $lookupDict['v'][$y] = implode(array_column($matrix, $y), '');
+    $lookup['v'][$y] = implode(array_column($matrix, $y), '');
 }
 for ($a = 0; $a <= $width + $height - 2; $a++) {
     for ($c = 0; $c <= $a; $c++) {
         // diagonal 1
         $r = $a - $c;
         if ($r < $height && $c < $width) {
-            if (!isset($lookupDict['d1'][$a])) {
-                $lookupDict['d1'][$a] = '';
+            if (!isset($lookup['d1'][$a])) {
+                $lookup['d1'][$a] = '';
             }
-            $lookupDict['d1'][$a] .= $matrix[$r][$c];
+            $lookup['d1'][$a] .= $matrix[$r][$c];
+            $lookup['d1_coords'][$a][] = [$r, $c];
         }
         // diagonal 2
         $r2 = $height - $r - 1;
         if ($r2 >= 0 && $r2 < $height && $c < $width) {
-            if (!isset($lookupDict['d2'][$a])) {
-                $lookupDict['d2'][$a] = '';
+            if (!isset($lookup['d2'][$a])) {
+                $lookup['d2'][$a] = '';
             }
-            $lookupDict['d2'][$a] .= $matrix[$r2][$c];
+            $lookup['d2'][$a] .= $matrix[$r2][$c];
+            $lookup['d2_coords'][$a][] = [$r2, $c];
         }
     }
 }
@@ -47,8 +49,10 @@ $words = explode(',', $file[2]);
 $founds = [];
 foreach ($words as $word) {
     $wordFound = false;
+    $wordLength = strlen($word);
+
     // At horizontal
-    foreach ($lookupDict['h'] as $r => $row) {
+    foreach ($lookup['h'] as $r => $row) {
         if ($wordFound) break;
         $v = strpos($row, $word);
         if (!$wordFound && $v !== false) {
@@ -60,7 +64,7 @@ foreach ($words as $word) {
         }
     }
     // At vertical
-    foreach ($lookupDict['v'] as $c => $column) {
+    foreach ($lookup['v'] as $c => $column) {
         if ($wordFound) break;
         $v = strpos($column, $word);
         if (!$wordFound && $v !== false) {
@@ -72,35 +76,33 @@ foreach ($words as $word) {
         }
     }
     // At diagonal 1
-    foreach ($lookupDict['d1'] as $d => $diagonal1) {
+    foreach ($lookup['d1'] as $d => $diagonal1) {
         if ($wordFound) break;
         $v = strpos($diagonal1, $word);
         if (!$wordFound && $v !== false) {
-            $founds[$word] = generateDiagonal1Coordinate($word, $v, $d, $width, $height); $wordFound = true;
+            $founds[$word] = array_slice($lookup['d1_coords'][$d], $v, $wordLength); $wordFound = true;
         }
         $v = strpos($diagonal1, strrev($word));
         if (!$wordFound && $v !== false) {
-            $founds[$word] = array_reverse(generateDiagonal1Coordinate($word, $v, $d, $width, $height)); $wordFound = true;
+            $founds[$word] = array_reverse(array_slice($lookup['d1_coords'][$d], $v, $wordLength)); $wordFound = true;
         }
     }
     // At diagonal 2
-    foreach ($lookupDict['d2'] as $d => $diagonal2) {
+    foreach ($lookup['d2'] as $d => $diagonal2) {
         if ($wordFound) break;
         $v = strpos($diagonal2, $word);
         if (!$wordFound && $v !== false) {
-            $founds[$word] = generateDiagonal1Coordinate($word, $v, $d, $width, $height); $wordFound = true;
-            $wordFound = true;
+            $founds[$word] = array_slice($lookup['d2_coords'][$d], $v, $wordLength); $wordFound = true;
         }
         $v = strpos($diagonal2, strrev($word));
         if (!$wordFound && $v !== false) {
-            $founds[$word] = array_reverse(generateDiagonal1Coordinate($word, $v, $d, $width, $height)); $wordFound = true;
-            $wordFound = true;
+            $founds[$word] = array_reverse(array_slice($lookup['d2_coords'][$d], $v, $wordLength)); $wordFound = true;
         }
     }
 }
 
 // Some visualisation and echo-ing
-renderMatrix($matrix);
+// renderMatrix($matrix);
 renderSolution($founds);
 
 // Print Execution time of the script
